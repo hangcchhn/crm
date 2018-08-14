@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 配置映射关系 -->
+	<class name="hn.cch.entity.User" table="user">
+		<id name="userId" column="userId">
+			<generator class="native"></generator>
+		</id>
+		<property name="userName" column="userName"></property>
+		<property name="userPwd" column="userPwd"></property>
+
+		<!--batch-size="10"-->
+		<set name="userVisits" inverse="true" cascade="delete">
+			<!-- 列主键类外键 -->
+			<key column="userId"></key>
+			<!-- 一对多配置 -->
+			<one-to-many class="hn.cch.entity.Visit"/>
+		</set>
+	</class>
+</hibernate-mapping>

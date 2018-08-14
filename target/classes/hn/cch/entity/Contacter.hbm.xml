@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 配置映射关系：类与表 -->
+	<class name="hn.cch.entity.Contacter" table="contacter">
+		<!-- 主键 -->
+		<id name="contacterId" column="contacterId">
+			<!-- 主键自动增长 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- 多对一配置 -->
+		<many-to-one name="contacterCustomer" class="hn.cch.entity.Customer" column="customerId" lazy="false"></many-to-one>
+
+
+		<!-- 其他字段 -->
+		<property name="contacterName" column="contacterName"></property>
+		<property name="contacterGender" column="contacterGender"></property>
+		<property name="contacterPhone" column="contacterPhone"></property>
+
+	</class>
+</hibernate-mapping>

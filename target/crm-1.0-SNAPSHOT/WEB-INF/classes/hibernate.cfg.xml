@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 数据库配置 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.current_session_class">thread</property>
+
+		<!-- 配置映射文件 -->
+		<mapping resource="hn/cch/entity/User.hbm.xml" />
+		<mapping resource="hn/cch/entity/Customer.hbm.xml" />
+		<mapping resource="hn/cch/entity/Level.hbm.xml" />
+		<mapping resource="hn/cch/entity/Source.hbm.xml" />
+		<mapping resource="hn/cch/entity/Contacter.hbm.xml" />
+		<mapping resource="hn/cch/entity/Visit.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

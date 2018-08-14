@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 配置映射关系 -->
+	<class name="hn.cch.entity.Visit" table="visit">
+		<id name="visitId" column="visitId">
+			<generator class="native"></generator>
+		</id>
+
+		<many-to-one name="visitUser" class="hn.cch.entity.User" column="userId" lazy="false"></many-to-one>
+		<many-to-one name="visitCustomer" class="hn.cch.entity.Customer" column="customerId" lazy="false"></many-to-one>
+
+		<property name="visitAddress" column="visitAddress"></property>
+		<property name="visitContent" column="visitContent"></property>
+		
+
+	</class>
+</hibernate-mapping>

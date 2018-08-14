@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 配置映射关系：类与表 -->
+	<class name="hn.cch.entity.Customer" table="customer">
+		<!-- 主键 -->
+		<id name="customerId" column="customerId">
+			<!-- 主键自动增长 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- 其他字段 -->
+		<property name="customerName" column="customerName"></property>
+
+		<!--字典配置-->
+		<many-to-one name="customerLevel" class="hn.cch.entity.Level" column="levelId" lazy="false"/>
+		<many-to-one name="customerSource" class="hn.cch.entity.Source" column="sourceId" lazy="false"/>
+
+		<property name="customerPhone" column="customerPhone"></property>
+		<property name="customerMoblie" column="customerMoblie"></property>
+		<!-- 集合配置 -->
+		<!--  cascade="save-update,delete" inverse="true" batch-size="10"  -->
+		<set name="customerContacters" inverse="true">
+			<!-- 外键 -->
+			<key column="customerId"></key>
+			<!-- 一对多配置 -->
+			<one-to-many class="hn.cch.entity.Contacter"/>
+		</set>
+		
+		<set name="customerVisits">
+			<key column="customerId"></key>
+			<one-to-many class="hn.cch.entity.Visit"/>
+		</set>
+	</class>
+</hibernate-mapping>

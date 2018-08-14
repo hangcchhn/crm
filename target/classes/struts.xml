@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 设置上传文件上限（默认2097152） -->
+	<constant name="struts.multipart.maxSize" value="20971520"></constant>
+
+	<package name="crm" extends="struts-default" namespace="/">
+
+		<action name="user_*" class="userAction" method="{1}">
+			<!--<result name="index" type="redirectAction">/</result>-->
+			<result name="successful">/home.jsp</result>
+			<result name="failed">/login.jsp</result>
+
+		</action>
+
+		<action name="customer_*" class="customerAction" method="{1}">
+
+			<result name="add">/jsp/customer/add.jsp</result>
+			<!-- <result name="insert">/jsp/success.jsp</result> -->
+			<result name="insert" type="redirectAction">customer_list</result>
+
+			<result name="list">/jsp/customer/list.jsp</result>
+
+			<result name="delete" type="redirectAction">customer_list</result>
+
+			<result name="edit">/jsp/customer/edit.jsp</result>
+
+			<result name="update" type="redirectAction">customer_list</result>
+
+			<result name="page">/jsp/customer/page.jsp</result>
+
+			<result name="name">/jsp/customer/list.jsp</result>
+
+			<result name="where">/jsp/customer/select.jsp</result>
+
+			<result name="select">/jsp/customer/list.jsp</result>
+
+			<result name="level">/jsp/customer/level.jsp</result>
+
+			<result name="source">/jsp/customer/source.jsp</result>
+
+		</action>
+
+		<action name="contacter_*" class="contacterAction" method="{1}">
+
+			<result name="add">/jsp/contacter/add.jsp</result>
+			<!-- <result name="insert">/jsp/success.jsp</result> -->
+			<result name="insert" type="redirectAction">contacter_list</result>
+
+			<result name="list">/jsp/contacter/list.jsp</result>
+
+			<result name="edit">/jsp/contacter/edit.jsp</result>
+			<result name="update" type="redirectAction">contacter_list</result>
+
+			<result name="delete" type="redirectAction">contacter_list</result>
+
+			<result name="name">/jsp/contacter/list.jsp</result>
+
+			<result name="where">/jsp/contacter/select.jsp</result>
+
+			<result name="select">/jsp/contacter/list.jsp</result>
+		</action>
+
+		<action name="visit_*" class="visitAction" method="{1}">
+		
+			<result name="add">/jsp/visit/add.jsp</result>
+			<!--<result name="insert">/jsp/success.jsp</result>-->
+			 <result name="insert" type="redirectAction">visit_list</result>
+
+			<result name="list">/jsp/visit/list.jsp</result>
+
+			<result name="edit">/jsp/visit/edit.jsp</result>
+			<result name="update" type="redirectAction">visit_list</result>
+
+			<result name="delete" type="redirectAction">visit_list</result>
+
+			<result name="content">/jsp/visit/list.jsp</result>
+
+			<result name="where">/jsp/visit/select.jsp</result>
+
+			<result name="select">/jsp/visit/list.jsp</result>
+
+
+		</action>
+
+	</package>
+</struts>
